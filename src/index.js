@@ -1,6 +1,13 @@
+/*
+ * @Author: Siwen
+ * @Date: 2019-09-16 10:47:29
+ * @LastEditors: Siwen
+ * @LastEditTime: 2019-09-16 10:47:29
+ * @Description: 
+ */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './index.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 

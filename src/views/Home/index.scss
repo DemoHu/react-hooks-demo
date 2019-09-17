@@ -1,0 +1,181 @@
+.home_view {
+  width: 100%;
+  height: 100%;
+  background: url('../../assets/home_bg.png') no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+  .container {
+    width: 100%;
+    min-height: 100%;
+    overflow-y: auto;
+    padding-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    .header {
+      width: 100%;
+      padding: 0 15px;
+      margin-top: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .avatar {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+      .nick_name {
+        flex: 1;
+        font-size: 12px;
+        color: #fefeff;
+        div:last-child {
+          font-size: 10px;
+        }
+      }
+      .no_login {
+        font-size: 14px !important;
+      }
+      .explain {
+        width: 74px;
+        height: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #413d97;
+        border-radius: 13px;
+        font-size: 12px;
+        color: #fff;
+      }
+    }
+    .amount_box {
+      width: 100%;
+      height: 32px;
+      background: url('../../assets/amount_bg.png') no-repeat;
+      background-size: 100% 100%;
+      background-position: center;
+      margin-top: 13px;
+      font-size: 11px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      // justify-content: space-around;
+      margin-bottom: 10px;
+      position: relative;
+      .left {
+        position: absolute;
+        left: 12%;
+      }
+      .right {
+        position: absolute;
+        left: 55%;
+      }
+    }
+    .count_down_box {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      color: #fff;
+      position: relative;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      .top {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        flex: 1;
+        position: relative;
+      }
+      .ufo {
+        width: 70px;
+        height: 67.5px;
+      }
+      .ufo_guang {
+        width: 316px;
+        height: 250px;
+        background: url('../../assets/ufo_guang.png') no-repeat;
+        background-size: 100% 100%;
+        background-position: center;
+        position: absolute;
+        top: 65px;
+      }
+      .text {
+        margin-top: 10px;
+        font-size: 21px;
+        z-index: 2;
+      }
+      .count_down {
+        font-size: 20px;
+        line-height: 40px;
+        z-index: 2;
+      }
+      .ball {
+        width: 148px;
+        height: 148px;
+        z-index: 2;
+      }
+    }
+    .info_box {
+      width: 90%;
+      height: 80px;
+      background-image: linear-gradient(268deg, 
+        #162a5c 0%, 
+        #2c1559 100%);
+      border-style: solid;
+      border-width: 1px;
+      border-image-source: linear-gradient(91deg, 
+        #9439d5 0%, 
+        #60ebf3 100%);
+      border-image-slice: 1;
+      opacity: 0.95;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      .my_amount,
+      .win_amount,
+      .my_club {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 14px;
+        color: #9f9bfa;
+        .amount_info {
+          font-size: 15px;
+          color: #fff;
+          span {
+            font-size: 10px;
+            color: #fe52d0;
+            margin-left: 5px;
+          }
+        }
+      }
+    }
+    .home_invite {
+      width: 100%;
+      height: 97px;
+      margin-top: 10px;
+      font-size: 15px;
+      color: #e1beff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .home_invite_link {
+        width: 90%;
+        height: 97px;
+        background: url('../../assets/home_invite.png') no-repeat;
+        background-size: 100% 100%;
+        background-position: center;
+        position: relative;
+        span {
+          position: absolute;
+          right: 17%;
+          top: 50%;
+        }
+      }
+    }
+  }
+}
