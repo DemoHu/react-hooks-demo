@@ -1,135 +1,81 @@
 /*
  * @Author: Siwen
+ * @Date: 2019-08-14 16:49:43
  * @LastEditors: Siwen
- * @Date: 2019-03-21 14:02:10
- * @LastEditTime: 2019-08-13 11:39:53
+ * @LastEditTime: 2019-09-18 16:50:35
  * @Description: 接口中心
  */
-import { post, get } from './http'
-import store from '../store'
+import axios from './request'
 
-export default {
-  /**获取用户信息 */
-  getUserInfo() {
-    return new Promise((resolve, reject) => {
-      get('/user/getInfo', {}).then(res => {
-        resolve(res)
-      }).catch(err => {
-        store.commit('SET_LOGIN', false)
-        store.commit('SET_INFO', {
-          userInfo: {
-            avatar: '',
-            money: '请先登录'
-          }
-        })
-        reject(err)
-      })
-    })
-  },
-  /**获取最新期号 */
-  getGoodsNewQuiz() {
-    return new Promise((resolve, reject) => {
-      get('/goods/newQuiz', {}).then(res => {
-        resolve(res)
-      }).catch(err => {
-        reject(err)
-      })
-    })
-  },
-  /**获取投注类型列表
-   * @param betType 投注类型 6 两面 7 名次 8 冠亚和
-   * @param roomType 房间类型
-  */
-  getGoodsBetType(betType, roomType) {
-    return new Promise((resolve, reject) => {
-      get('/goods/bettingType', { betType, roomType }).then(res => {
-        resolve(res)
-      }).catch(err => {
-        reject(err)
-      })
-    })
-  },
-  /**参与竞猜
-   * @param num 下注数量
-   * @param stake 商品类型
-   * @param betId 投注类型ID
-   * @param period 期号
-   * @param roomType 房间类型
-  */
-  createQuiz({ num, stake, betId, period, roomType }) {
-    return new Promise((resolve, reject) => {
-      post('/order/createQuiz', { num, stake, betId, period, roomType }).then(res => {
-        resolve(res)
-      }).catch(err => {
-        reject(err)
-      })
-    })
-  },
-  /** 获取用户当期下单限额
-   * @param period 期号
-  */
-  queryLimit({ period }) {
-    return new Promise((resolve, reject) => {
-      post('/order/queryLimit', { period }).then(res => {
-        resolve(res)
-      }).catch(err => {
-        reject(err)
-      })
-    })
-  },
-  /**助手数据
-   * @param page 页数
-   */
-  lotteryList(page) {
-    return new Promise((resolve, reject) => {
-      get('/lottery/list', { page }).then(res => {
-        resolve(res)
-      }).catch(err => {
-        reject(err)
-      })
-    })
-  },
-  /**获取排行榜 */
-  getRankList() {
-    return new Promise((resolve, reject) => {
-      get('/rank/list', {}).then(res => {
-        resolve(res)
-      }).catch(err => {
-        reject(err)
-      })
-    })
-  },
-  /**获取订单记录
-   * @param type 订单类型
-   * @param page 页数
-   */
-  getOrderList({ type, page }) {
-    return new Promise((resolve, reject) => {
-      get('/order/ticketList', { type, page, pageSize: 10 }).then(res => {
-        resolve(res)
-      }).catch(err => {
-        reject(err)
-      })
-    })
-  },
-  /**获取房间列表*/
-  roomList() {
-    return new Promise((resolve, reject) => {
-      get('/goods/roomList', {}).then(res => {
-        resolve(res)
-      }).catch(err => {
-        reject(err)
-      })
-    })
-  },
-  /**验证房间状态 */
-  roomKeepalive() {
-    return new Promise((resolve, reject) => {
-      get('/room/keepalive', {}).then(res => {
-        resolve(res)
-      }).catch(err => {
-        reject(err)
-      })
-    })
-  }
+export const getUserInfo = () => {
+  return axios.post('/user/userInfo')
+}
+/**gt初始化 */
+export const initGt = (account) => {
+  return axios.post('/user/initGt', {
+    account,
+    clientType: 'web'
+  })
+}
+export const verifyGt = (data) => {
+  return axios.post('/user/verifyGt', data)
+}
+export const verifyCode = (data) => {
+  return axios.post('/user/verifyCode', data)
+}
+export const sendCode = (account, codeType) => {
+  return axios.post('/user/sendCode', { account, codeType, orgId: 4 })
+}
+export const login = (account) => {
+  return axios.post('/user/login', { account, orgId: 4 })
+}
+export const logout = () => {
+  return axios.post('user/logout')
+}
+export const register = (data) => {
+  return axios.post('/user/register', data)
+}
+/**首页奖池余额/总充值 */
+export const pondInfo = () => {
+  return axios.post('/pond/pondInfo')
+}
+/**抽奖首页 */
+export const indexInfo = () => {
+  return axios.post('/pond/indexInfo')
+}
+/**参与抽奖接口 */
+export const pondDraw = () => {
+  return axios.post('/pond/draw')
+}
+/**我的资产 */
+export const accountAsset = () => {
+  return axios.post('/account/asset')
+}
+/**账户记录 */
+export const accountLog = (data) => {
+  return axios.post('/account/accountLog', data)
+}
+/**我的钱包地址 */
+export const accountRchAddress = () => {
+  return axios.post('/account/rchAddress')
+}
+/**快捷充值 */
+export const rchFast = () => {
+  return axios.post('/account/rchFast')
+}
+/**我的社区成员列表 */
+export const myNodeUserList = (data) => {
+  return axios.post('/node/myNodeUserList', data)
+}
+/**我的社区统计数据 */
+export const myNodeInfo = () => {
+  return axios.post('/node/myNodeInfo')
+}
+/**申请节点 */
+export const applyNode = () => {
+  return axios.post('/node/applyNode')
+}
+/**推荐节点 */
+export const recommendNode = (data) => {
+  return axios.post('/node/recommendNode', data)
 }
