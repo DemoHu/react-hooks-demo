@@ -64,6 +64,8 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
+    "build-prod": "cross-env REACT_APP_ENV=production node scripts/build.js",
+    "build-stage": "cross-env REACT_APP_ENV=stage node scripts/build.js",
     "test": "node scripts/test.js"
   },
   "eslintConfig": {
@@ -82,6 +84,7 @@
     ]
   },
   "devDependencies": {
+    "cross-env": "^6.0.0",
     "http-proxy-middleware": "^0.20.0",
     "node-sass": "^4.12.0"
   },

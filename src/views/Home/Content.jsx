@@ -45,7 +45,7 @@ function Content(props) {
         <div className="header">
           <img src={`https://picsum.photos/id/132/70/70`} className="avatar" alt="" />
           <div className="nick_name">
-            <Link to="/login" className="no_login">飞翔的河南人</Link>
+            <Link to="/login" className="no_login">{ process.env.REACT_APP_ENV }</Link>
             <div>UID: 2323223</div>
           </div>
           <Link to="/explain" className="explain">游戏规则</Link>
