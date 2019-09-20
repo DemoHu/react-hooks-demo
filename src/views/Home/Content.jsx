@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import { indexInfo, pondInfo } from '../../api/index'
-
 import './index.scss'
 
 function Content(props) {
@@ -16,24 +15,19 @@ function Content(props) {
   useEffect(() => {
     getPondInfo()
     getIndexInfo()
-    return () => {
-      getPondInfo(true)
-      getIndexInfo(true) //卸载组件时传入状态值
-    }
+    return () => {}
     // eslint-disable-next-line
   }, [])
-  const getPondInfo = (close) => {
+  const getPondInfo = () => {
     pondInfo().then(res => {
-      if(close) return //根据状态阻止更新state，以防止react内存泄漏警告
       pondBalance = setPondBalance(res.pondBalance)
       rechargeTotal = setRechargeTotal(res.rechargeTotal)
     }).catch(err => {
       console.log(err.message)
     })
   }
-  const getIndexInfo = (close) => {
+  const getIndexInfo = () => {
     indexInfo().then(res => {
-      if(close) return
       availBalance = setAvailBalance(res.availBalance)
       prizeAmount = setPrizeAmount(res.prizeAmount)
       nodeCnt = setNodeCnt(res.nodeCnt)
