@@ -3,7 +3,7 @@ import { Link, withRouter } from 'react-router-dom'
 import './tabbar.scss'
 
 function Tabbar(props) {
-  console.log(props)
+  const { pathname } = props.location
   const [ routerList ] = useState([
     {
       url: '/',
@@ -29,10 +29,10 @@ function Tabbar(props) {
       <ul className="footer_box">
         {routerList.map((item, index) => {
           return (
-            <li className={item.url === props.location.pathname ? 'item_tabbar_active item_tabbar' : 'item_tabbar'} key={index}>
+            <li className={item.url === pathname ? 'item_tabbar_active item_tabbar' : 'item_tabbar'} key={index}>
               <Link to={item.url} exact="true">
-                <img src={item.url === props.location.pathname ? item.icon2 : item.icon1} alt="" />
-                <p className={ item.url === props.location.pathname ? 'active tabbar-label' : 'tabbar-label'}>{ item.name }</p>
+                <img src={item.url === pathname ? item.icon2 : item.icon1} alt="" />
+                <p className={ item.url === pathname ? 'active tabbar-label' : 'tabbar-label'}>{ item.name }</p>
               </Link>
             </li>
           )

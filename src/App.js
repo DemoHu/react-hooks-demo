@@ -2,7 +2,7 @@
  * @Author: Siwen
  * @Date: 2019-09-16 10:47:29
  * @LastEditors: Siwen
- * @LastEditTime: 2019-09-19 09:51:41
+ * @LastEditTime: 2019-09-19 15:46:00
  * @Description: 
  */
 import React from 'react'
@@ -16,8 +16,8 @@ function App() {
       <Router>
         <Switch>
           {Routers.map((item, index) => {
-            return <Route path={item.path} key={index} exact render={(porps) => 
-              ( !item.meta.auth ? <item.component {...porps} /> : <Login /> )
+            return <Route path={item.path} key={index} exact render={(props) => 
+              ( !item.meta.auth ? <item.component {...props} /> : <Login /> )
             }></Route>
           })}
         </Switch>
