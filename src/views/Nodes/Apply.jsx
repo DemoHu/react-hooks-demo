@@ -1,18 +1,19 @@
 import React from 'react'
 import { applyNode } from '../../api/index'
+import { Toast } from 'antd-mobile'
 
 function Apply(props) {
   const { tabs } = props
   const submitApply = () => {
     applyNode().then((res) => {
-      alert('恭喜你成为社区节点')
+      Toast.info('恭喜你成为社区节点')
     }).catch((err) => {
       if (err.code === 5010) {
-        alert(`您已是社区节点，无需重复申请`)
+        Toast.info(`您已是社区节点，无需重复申请`)
       } else if (err.code === 5011 || err.code === 5012) {
-        alert(`您的条件不满足，无法申请节点`)
+        Toast.info(`您的条件不满足，无法申请节点`)
       } else {
-        alert(`申请失败： ${err.message}`)
+        Toast.info(`申请失败： ${err.message}`)
       }
     })
   }
