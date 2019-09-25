@@ -12,14 +12,17 @@ function Content(props) {
   let [canDraw, changeCanDraw] = useState(true)
   let [countDown, setCountDown] = useState('00:00:00')
 
+  let cancelToken = true
   useEffect(() => {
     getPondInfo()
     getIndexInfo()
-    return () => {}
-    // eslint-disable-next-line
+    return () => {
+      cancelToken = false
+    }
   }, [])
   const getPondInfo = () => {
     pondInfo().then(res => {
+      if(!cancelToken) return false
       pondBalance = setPondBalance(res.pondBalance)
       rechargeTotal = setRechargeTotal(res.rechargeTotal)
     }).catch(err => {
@@ -28,6 +31,7 @@ function Content(props) {
   }
   const getIndexInfo = () => {
     indexInfo().then(res => {
+      if(!cancelToken) return false
       availBalance = setAvailBalance(res.availBalance)
       prizeAmount = setPrizeAmount(res.prizeAmount)
       nodeCnt = setNodeCnt(res.nodeCnt)
