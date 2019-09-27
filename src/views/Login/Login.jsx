@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-
+import { connect } from 'react-redux'
 import './login.scss'
 
 function Login(props) {
@@ -10,8 +10,19 @@ function Login(props) {
   let time = 0
   let timer = null
 
+  useEffect(() => {
+    if (props.login) {
+      props.history.push('/')
+    }
+    return () => {}
+  }, [])
+
   const loginFunc =() => {
-    console.log(phone, code)
+    props.dispatchLogin({
+      nickName: phone,
+      userId: code
+    })
+    props.history.push('/')
   }
   const getCode =() => {
     time = 60
@@ -62,4 +73,16 @@ function Login(props) {
   )
 }
 
-export default Login
+const loginStateProps = state => {
+  return {
+    login: state.userInfo.login
+  }
+}
+const loginDispatchToProps = dispatch => {
+return {
+  dispatchLogin(data) {
+    dispatch({ type: 'Login', data })
+  }
+}
+}
+export default connect(loginStateProps, loginDispatchToProps)(Login)
