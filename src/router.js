@@ -2,13 +2,14 @@
  * @Author: Siwen
  * @Date: 2019-09-17 14:29:01
  * @LastEditors: Siwen
- * @LastEditTime: 2019-09-27 10:23:07
+ * @LastEditTime: 2019-10-10 11:17:53
  * @Description: 路由表
  */
-import Home from './views/Home/Home'
-import Nodes from './views/Nodes/Nodes'
-import Center from './views/Center/Center'
-import Login from './views/Login/Login'
+import React from 'react'
+const Home = React.lazy(() => import('./views/Home/Home'))
+const Nodes = React.lazy(() => import('./views/Nodes/Nodes'))
+const Center = React.lazy(() => import('./views/Center/Center'))
+const Login = React.lazy(() => import('./views/Login/Login'))
 
 export default [
   { path: '/', name: 'Home', meta: {}, component: Home },

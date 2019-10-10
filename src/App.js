@@ -2,10 +2,10 @@
  * @Author: Siwen
  * @Date: 2019-09-16 10:47:29
  * @LastEditors: Siwen
- * @LastEditTime: 2019-09-27 15:39:27
+ * @LastEditTime: 2019-10-10 11:25:47
  * @Description: 
  */
-import React from 'react'
+import React, { Suspense } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Routers from './router'
 import Login from './views/Login/Login'
@@ -20,7 +20,10 @@ function App() {
         <Switch>
           {Routers.map((item, index) => {
             return <Route path={item.path} key={index} exact render={(props) =>
-              (!item.meta.auth || userInfo.login ? <item.component {...props} /> : <Login {...props} /> )
+              (!item.meta.auth || userInfo.login ?
+                <Suspense fallback={null}>
+                  <item.component {...props} />
+                </Suspense> : <Login {...props} /> )
             }></Route>
           })}
         </Switch>

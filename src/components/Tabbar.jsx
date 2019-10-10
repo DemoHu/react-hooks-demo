@@ -3,6 +3,7 @@ import { Link, withRouter } from 'react-router-dom'
 import './tabbar.scss'
 
 function Tabbar(props) {
+  console.log(props)
   const { pathname } = props.location
   const [ routerList ] = useState([
     {
@@ -41,4 +42,5 @@ function Tabbar(props) {
     </div>
   )
 }
-export default withRouter(Tabbar)
+// export default withRouter(Tabbar)
+export default React.memo(withRouter(Tabbar))
